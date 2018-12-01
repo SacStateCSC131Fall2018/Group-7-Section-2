@@ -15,8 +15,7 @@ public class PirexCore {
 		
 		//Create the main window
 		PirexFrame pirex = new PirexFrame();
-		
-		//Add all the components: 
+		 
 		
 		//Adding File Menu
 		
@@ -29,12 +28,13 @@ public class PirexCore {
 		jtb.add("Summarize Documents", new SummaryTab()); //Document Summary Tab
 		pirex.add(jtb, BorderLayout.CENTER);
 		
-		//Add functionality components
+		//Add functionality to the components
 		
 		
+		//Add Icon to the JFrame top panel.
+		//ImageIcon icon = new ImageIcon
 		
-		
-		//Setting the window visible
+		//Configure window settings
 		pirex.setSize(1080, 720);
 		pirex.setResizable(false);
 		pirex.setVisible(true);
