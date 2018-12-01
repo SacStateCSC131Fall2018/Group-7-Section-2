@@ -36,6 +36,7 @@ public class PirexCore {
 		
 		//Setting the window visible
 		pirex.setSize(1080, 720);
+		pirex.setResizable(false);
 		pirex.setVisible(true);
 
 	}
