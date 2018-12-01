@@ -1,4 +1,4 @@
-package app;
+
 import javax.swing.*;
 
 public class PirexInterfaceTabs extends JTabbedPane
