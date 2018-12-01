@@ -12,6 +12,11 @@ import javax.swing.JFrame;
  */
 public class PirexFrame extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8008539775178469403L;
+
 	/*
 	 * Default Constructor: constructs a new PirexFrame with Name "Pirex"
 	 * The default layout used in BorderLayout

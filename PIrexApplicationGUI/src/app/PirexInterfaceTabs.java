@@ -4,6 +4,10 @@ import javax.swing.*;
 public class PirexInterfaceTabs extends JTabbedPane
 {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4276663338227407841L;
 	private final String[] tabNames = {"Search for Documents", "Load Documents", "Summarize Documents"};
 	
 	/*

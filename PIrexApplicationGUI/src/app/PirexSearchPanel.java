@@ -4,6 +4,11 @@ import java.awt.*;
 
 public class PirexSearchPanel extends JPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2664023311134068156L;
+
 	public PirexSearchPanel()
 	{
 		super(new FlowLayout());
