@@ -11,6 +11,8 @@ public class MenuBar extends JMenuBar {
 	//Field variables
 	JMenu fileMenu, optionsMenu, helpMenu;
 	JMenuItem exit, export, loadQuery, saveQuery, open;
+	JMenuItem sources, documents;
+	JMenuItem about, index;
 	
 	public MenuBar() {
 		super();
@@ -34,11 +36,19 @@ public class MenuBar extends JMenuBar {
 		fileMenu.add(exit);
 		
 		//Add Buttons to Options Menu
+		sources = new JMenuItem("Sources");
+		documents = new JMenuItem("Documents");
 		
+		optionsMenu.add(documents);
+		optionsMenu.add(sources);
 		
 		
 		//Add Buttons to Help Menu
+		about = new JMenuItem("About");
+		index = new JMenuItem("Index");
 		
+		helpMenu.add(index);
+		helpMenu.add(about);
 		
 		//Add menus to the bar
 		add(fileMenu);
