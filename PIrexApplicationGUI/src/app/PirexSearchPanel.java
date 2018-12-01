@@ -16,7 +16,7 @@ public class PirexSearchPanel extends JPanel
 	private void addQuery()
 	{
 		// TODO Auto-generated method stub
-		//testing eclipse
+
 		
 	}
 
