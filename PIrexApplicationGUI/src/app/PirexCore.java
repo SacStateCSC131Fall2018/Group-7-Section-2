@@ -1,5 +1,3 @@
-package app;
-
 import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
@@ -19,7 +17,8 @@ public class PirexCore {
 		 
 		
 		//Adding File Menu
-		
+		MenuBar bar = new MenuBar();
+		pirex.add(bar, BorderLayout.NORTH );
 		
 		//Adding Tabs
 		JTabbedPane jtb = new JTabbedPane();
