@@ -2,7 +2,6 @@ package app;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JMenu;
 import javax.swing.JTabbedPane;
 
 /*
