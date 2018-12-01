@@ -9,7 +9,7 @@ class SummaryTabTest {
 		try {
 			new SummaryTab();
 		} catch(Exception e) {
-			assertTrue(true);
+			assertTrue(false);
 		}
 	}
 
