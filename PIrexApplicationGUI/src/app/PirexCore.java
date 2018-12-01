@@ -32,6 +32,7 @@ public class PirexCore {
 		//Add functionality to the components
 		
 		
+		
 		//Add Icon to the JFrame top panel.
 		ImageIcon icon = new ImageIcon("logo.png");
 		pirex.setIconImage(icon.getImage());

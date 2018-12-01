@@ -17,6 +17,7 @@ public class PirexInterfaceTabs extends JTabbedPane
 	{
 		super();
 		//createTabs();
+		
 	}
 	
 	/*
