@@ -19,11 +19,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
 
-@SuppressWarnings("serial") // this class does not employ serialization.
 public class PirexLoadingTab extends JPanel 
 {
 	
-	private JTextField jtfFilePath = new JTextField(80), jtfTitle = new JTextField(45), jtfAuthor = new JTextField(40);
+	private static final long serialVersionUID = 123456L; 
+	private JTextField jtfFilePath = new JTextField(1), jtfTitle = new JTextField(45), jtfAuthor = new JTextField(40);
 	private JButton jbBrowse = new JButton("Browse"), jbProcess = new JButton("Process");
 	private String[] comboBoxOptions = new String[] {"Project Gutenberg File", "Plain Text File"};
 	private JComboBox<String> jcbFileType = new JComboBox<String>(comboBoxOptions);
@@ -33,6 +33,9 @@ public class PirexLoadingTab extends JPanel
 	{
 		super();
 		Container loadTab = this;
+		Insets inset = new Insets(0,5,5,0);
+		
+		
 		loadTab.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		
@@ -40,26 +43,48 @@ public class PirexLoadingTab extends JPanel
 		gbc.insets = new Insets(5,5,5,5);
 		
 		FlowLayout rowLayout = new FlowLayout(-0,7, 0); // controls layout for rows 1 through 3
-		row1.setLayout(rowLayout);
-		row2.setLayout(rowLayout);
-		row3.setLayout(rowLayout);
-		row4.setLayout(rowLayout);
+		row1.setLayout(new GridBagLayout());
+		row2.setLayout(new GridBagLayout());
+		row3.setLayout(new GridBagLayout());
+		
+		row4.setLayout(new FlowLayout(-0));
 
 		//build row 1
-		row1.add(new JLabel("Text File"));
-		row1.add(jtfFilePath);
-		row1.add(jbBrowse);
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		row1.add(new JLabel("Text File"), gbc);
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.weightx = 1;
+		row1.add(jtfFilePath, gbc);
+		gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		row1.add(jbBrowse, gbc);
 		
 		//build row 2
-		row2.add(new JLabel("Text File Type"));
-		jcbFileType.setPrototypeDisplayValue((String)"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"); //set default width
-		row2.add(jcbFileType);
+		gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		row2.add(new JLabel("Text File Type"), gbc);
+		gbc.weightx = 1;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		row2.add(jcbFileType, gbc);
 		
 		//build row 3
-		row3.add(new JLabel("Title"));
-		row3.add(jtfTitle);
-		row3.add(new JLabel("Author"));
-		row3.add(jtfAuthor);
+		gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		row3.add(new JLabel("Title"), gbc);
+		gbc.weightx = 1;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		row3.add(jtfTitle, gbc);
+		gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		row3.add(new JLabel("Author"), gbc);
+		gbc.weightx = 1;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		row3.add(jtfAuthor, gbc);
 		
 		//build row4
 		row4.add(jbProcess);
@@ -69,7 +94,6 @@ public class PirexLoadingTab extends JPanel
 		
 		jpLoad.setBorder(BorderFactory.createEtchedBorder());
 		jpLoad.setBackground(Color.WHITE);
-		//jpLoad.setMinimumSize(new Dimension(jpLoad.getPreferredSize().width, 500));
 		
 		//Add subcomponents to top-level container
 		gbc.weightx = 1;
@@ -103,8 +127,6 @@ public class PirexLoadingTab extends JPanel
 		gbc.gridx = 0;
 		gbc.gridy = 5;
 		loadTab.add(jpLoad,gbc);
-		
-		
 		
 	}
 	
