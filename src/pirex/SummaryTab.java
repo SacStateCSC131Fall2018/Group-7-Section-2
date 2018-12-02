@@ -23,7 +23,7 @@ public class SummaryTab extends JPanel
 		text.setText("");
 		text.setEditable(false);
 		//Creating a scroll pane.
-		JScrollPane scrollableTextArea = new JScrollPane(text);
+		JScrollPane scrollableTextArea = new JScrollPane(text, 22, 31);
 		
 		//Add to the Summary Tab
 		add(scrollableTextArea);
