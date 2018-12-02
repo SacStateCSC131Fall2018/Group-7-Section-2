@@ -27,7 +27,6 @@ public class PirexFrame extends JFrame {
 		setLayout(new BorderLayout());
 		setSize(1080, 720);
 		setResizable(true);
-		setVisible(true);
 		ImageIcon icon = new ImageIcon("src\\assets\\logo.png");
 		setIconImage(icon.getImage());
 		
