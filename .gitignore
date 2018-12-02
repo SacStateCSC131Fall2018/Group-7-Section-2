@@ -9,3 +9,5 @@
 
 #.project files will never be committed
 .project
+
+.classpath
