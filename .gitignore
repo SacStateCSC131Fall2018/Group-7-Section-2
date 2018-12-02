@@ -1,0 +1,2 @@
+# .DS_Store files should never be committed to codebase
+.DS_Store
