@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry excluding="pirex/" kind="src" path="PIrexApplicationGUI/src/app"/>
-	<classpathentry kind="src" path="PIrexApplicationGUI/src/app/pirex"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
