@@ -1,8 +1,6 @@
 package pirex;
-
-
 import java.awt.BorderLayout;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /*
@@ -27,8 +25,11 @@ public class PirexFrame extends JFrame {
 		
 		super("Pirex");
 		setLayout(new BorderLayout());
-		//setSize(780, 520);
-		//setResizable(false);
+		setSize(1080, 720);
+		setResizable(true);
+		setVisible(true);
+		ImageIcon icon = new ImageIcon("src\\assets\\logo.png");
+		setIconImage(icon.getImage());
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
