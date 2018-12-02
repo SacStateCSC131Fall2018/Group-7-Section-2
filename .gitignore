@@ -3,3 +3,6 @@
 
 # .class files will never be committed
 *.class
+
+# /bin directory shouldn't be committed
+/bin/
