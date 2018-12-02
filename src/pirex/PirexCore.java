@@ -34,7 +34,7 @@ public class PirexCore {
 		
 		
 		//Add Icon to the JFrame top panel.
-		ImageIcon icon = new ImageIcon("C:\\Users\\ehall\\Documents\\GitHub\\Group-7-Section-2\\PIrexApplicationGUI\\src\\logo.png");
+		ImageIcon icon = new ImageIcon("src\\assets\\logo.png");
 		pirex.setIconImage(icon.getImage());
 		
 		//Configure window settings
