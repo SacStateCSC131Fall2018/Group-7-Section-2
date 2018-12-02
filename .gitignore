@@ -1,2 +1,5 @@
-# .DS_Store files should never be committed to codebase
+# .DS_Store files should never be committed
 .DS_Store
+
+# .class files will never be committed
+*.class
