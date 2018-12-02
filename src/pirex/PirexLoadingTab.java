@@ -12,14 +12,15 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
 
-public class PirexLoadingTab extends JPanel 
+public class PirexLoadingTab extends JPanel
 {
 	
 	private static final long serialVersionUID = 123456L; 
@@ -28,6 +29,8 @@ public class PirexLoadingTab extends JPanel
 	private String[] comboBoxOptions = new String[] {"Project Gutenberg File", "Plain Text File"};
 	private JComboBox<String> jcbFileType = new JComboBox<String>(comboBoxOptions);
 	private JPanel jpLoad = new JPanel(); // this panel is the load summary window
+	
+	private String filePath;
 	
 	PirexLoadingTab()
 	{
@@ -60,6 +63,7 @@ public class PirexLoadingTab extends JPanel
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = inset;
 		row1.add(jbBrowse, gbc);
+		jbBrowse.addActionListener(new loadListener()) ;
 		
 		//build row 2
 		gbc = new GridBagConstraints();
@@ -128,6 +132,25 @@ public class PirexLoadingTab extends JPanel
 		gbc.gridy = 5;
 		loadTab.add(jpLoad,gbc);
 		
+	}
+	
+	/**
+	 * 
+	 * @author Dean Gramcko
+	 * ActionListener to allow user to select a file and updates the file path displayed.
+	 *
+	 */
+	private class loadListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent buttonpress)
+		{
+			JFileChooser fc = new JFileChooser();
+			if(fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+			{
+				filePath = fc.getSelectedFile().getAbsolutePath();
+				jtfFilePath.setText(filePath);
+			}
+		}
 	}
 	
 }
