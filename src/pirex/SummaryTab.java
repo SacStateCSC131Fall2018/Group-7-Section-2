@@ -1,9 +1,6 @@
 package pirex;
 
-
-import java.util.HashMap;
-import java.util.Map;
-
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -19,9 +16,8 @@ public class SummaryTab extends JPanel
 	
 	public SummaryTab()
 	{
-		
 		super(); //Initializing
-		
+		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 		//Add a new Text area to summary tab
 		JTextArea text = new JTextArea(40, 88);
 		text.setText("");
