@@ -11,39 +11,73 @@ public class PirexSearchPanel extends JPanel
 
 	public PirexSearchPanel()
 	{
-		super(new FlowLayout());
+		super(new GridBagLayout());
 
-		//for top row (query row)
-		GridLayout queryLayout = new GridLayout(0,3);
-		JPanel topPanel = new JPanel();
-		topPanel.add(new JLabel("Query: "));
-		topPanel.add(new JTextField(70));
-		topPanel.add(new JButton("Clear"));
-		add(topPanel, queryLayout);
-
-
-		addQuery();
-		addClearButton();
+		addQueryRow();
 		addResultsWindow();
+		addRetrieveDocumentsCounter();
 		addPreviewWindow();
 	}
 
-	private void addQuery()
+	private void addQueryRow()
 	{
-		// TODO Auto-generated method stub
-
-	}
-
-	private void addClearButton()
-	{
-		// TODO Auto-generated method stub
-
+		//for top row (query row)
+		JPanel topPanel = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		Insets inset = new Insets(0,5,5,0);
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		topPanel.add(new JLabel("Query: "), gbc);
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.weightx = 1;
+		topPanel.add(new JTextField(70), gbc);
+		gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		topPanel.add(new JButton("Clear"), gbc);
+		gbc = new GridBagConstraints();
+		gbc.weightx = 1;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		add(topPanel, gbc);
 	}
 
 	private void addResultsWindow()
 	{
-		// TODO Auto-generated method stub
-
+		JPanel middlePanel = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		Insets inset = new Insets(0,5,5,0);
+		JTextArea resultsText = new JTextArea();
+		resultsText.setText("");
+		resultsText.setEditable(false);
+		JScrollPane scrollResults = new JScrollPane(resultsText, 20, 31);
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = inset;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		middlePanel.add(scrollResults, gbc);
+		gbc = new GridBagConstraints();
+		gbc.weighty = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.gridwidth = GridBagConstraints.RELATIVE;
+		add(middlePanel, gbc);
+	}
+	
+	private void addRetrieveDocumentsCounter()
+	{
+		JPanel middlePanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		GridBagConstraints gbc = new GridBagConstraints();
+		JLabel message = new JLabel("Test");
+		//message.setVisible(false);
+		middlePanel2.add(message);
+		gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		add(middlePanel2, gbc);
 	}
 
 	private void addPreviewWindow()
