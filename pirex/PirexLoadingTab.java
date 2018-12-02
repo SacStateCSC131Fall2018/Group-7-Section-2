@@ -1,3 +1,4 @@
+package pirex;
 
 import javax.swing.JPanel;
 import javax.swing.JSeparator;

@@ -1,3 +1,4 @@
+package pirex;
 import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;

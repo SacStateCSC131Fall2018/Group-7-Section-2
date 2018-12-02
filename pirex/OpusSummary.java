@@ -1,3 +1,4 @@
+package pirex;
 import javax.swing.JLabel;
 
 public class OpusSummary extends JLabel 
