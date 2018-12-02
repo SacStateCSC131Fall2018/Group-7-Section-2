@@ -1,5 +1,7 @@
 package pirex;
 import java.awt.BorderLayout;
+import java.io.File;
+
 import javax.swing.ImageIcon;
 import javax.swing.JTabbedPane;
 
@@ -31,7 +33,8 @@ public class PirexCore {
 		
 		
 		//Add Icon to the JFrame top panel.
-		ImageIcon icon = new ImageIcon("src\\assets\\logo.png");
+		String iconPath = "src" + File.separator + "assets" + File.separator + "logo.png";
+		ImageIcon icon = new ImageIcon(iconPath);
 		pirex.setIconImage(icon.getImage());
 		
 		//Configure window settings
