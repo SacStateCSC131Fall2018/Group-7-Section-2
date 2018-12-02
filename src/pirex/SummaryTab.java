@@ -21,13 +21,11 @@ public class SummaryTab extends JPanel
 	{
 		super(new GridBagLayout()); //Initializing
 		GridBagConstraints gbc = new GridBagConstraints();
-		//this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
 		//Add a new Text area to summary tab
 		textArea.setText("");
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
-
 
 		//Creating a scroll pane.
 		JScrollPane scrollableTextArea = new JScrollPane(textArea, 22, 31);
@@ -40,8 +38,5 @@ public class SummaryTab extends JPanel
 
 		//Add to the Summary Tab
 		add(scrollableTextArea, gbc);
-
-
 	}
-
 }
