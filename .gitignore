@@ -2,6 +2,10 @@
 .DS_Store
 
 # .class files will never be committed
+*.class*
 
 # /bin directory shouldn't be committed
 /bin/
+
+#.project files will never be committed
+.project
