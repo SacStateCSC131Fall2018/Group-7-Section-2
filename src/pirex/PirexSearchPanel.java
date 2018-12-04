@@ -71,7 +71,7 @@ public class PirexSearchPanel extends JPanel
 	{
 		JPanel middlePanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		GridBagConstraints gbc = new GridBagConstraints();
-		JLabel message = new JLabel("Test");
+		JLabel message = new JLabel("    ");
 		//message.setVisible(false);
 		middlePanel2.add(message);
 		gbc = new GridBagConstraints();
