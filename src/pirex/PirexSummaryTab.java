@@ -11,13 +11,13 @@ import java.awt.Insets;
  * This class creates a summary tab.
  * This summary tab has a JTextArea which can be scrolled
  */
-public class SummaryTab extends JPanel
+public class PirexSummaryTab extends JPanel
 {
 	JTextArea textArea = new JTextArea(40, 88);
 
 	private static final long serialVersionUID = -6708932581784591812L;
 	
-	public SummaryTab()
+	public PirexSummaryTab()
 	{
 		super(new GridBagLayout()); //Initializing
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -33,7 +33,7 @@ public class SummaryTab extends JPanel
 		//Arrange layout
 		gbc.weightx = 1.0;
 		gbc.weighty = 1.0;
-		gbc.insets = new Insets(5,5,5,5);
+		gbc.insets = new Insets(10,10,10,10);
 		gbc.fill = GridBagConstraints.BOTH;
 
 		//Add to the Summary Tab
