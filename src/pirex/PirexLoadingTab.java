@@ -34,7 +34,7 @@ public class PirexLoadingTab extends JPanel
 	{
 		super();
 		Container loadTab = this;
-		Insets inset = new Insets(0,5,5,0);
+		Insets inset = new Insets(2,10,2,10);
 		
 		
 		loadTab.setLayout(new GridBagLayout());
@@ -43,7 +43,6 @@ public class PirexLoadingTab extends JPanel
 		JPanel row1 = new JPanel(), row2 = new JPanel(), row3 = new JPanel(),row4 = new JPanel();
 		gbc.insets = new Insets(5,5,5,5);
 		
-		FlowLayout rowLayout = new FlowLayout(-0,7, 0); // controls layout for rows 1 through 3
 		row1.setLayout(new GridBagLayout());
 		row2.setLayout(new GridBagLayout());
 		row3.setLayout(new GridBagLayout());
@@ -90,6 +89,7 @@ public class PirexLoadingTab extends JPanel
 		
 		//build row4
 		row4.add(jbProcess);
+		jbProcess.setEnabled(false); //disabled by default - enabled when a file is selected
 		
 		
 		//set up Load Summary Display Window
@@ -147,6 +147,7 @@ public class PirexLoadingTab extends JPanel
 			{
 				filePath = fc.getSelectedFile().getAbsolutePath();
 				jtfFilePath.setText(filePath);
+				jbProcess.setEnabled(true);
 			}
 		}
 	}
