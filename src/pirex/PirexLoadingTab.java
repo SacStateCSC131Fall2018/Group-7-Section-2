@@ -34,7 +34,7 @@ public class PirexLoadingTab extends JPanel
 	{
 		super();
 		Container loadTab = this;
-		Insets inset = new Insets(2,10,2,10);
+		Insets inset = new Insets(2,7,2,7);
 		
 		
 		loadTab.setLayout(new GridBagLayout());
