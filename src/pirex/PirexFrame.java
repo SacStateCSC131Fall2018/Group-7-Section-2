@@ -1,7 +1,6 @@
 package pirex;
 import java.awt.BorderLayout;
 import java.io.File;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
