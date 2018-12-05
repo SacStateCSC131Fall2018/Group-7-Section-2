@@ -18,6 +18,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AboutFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public AboutFrame() {
 		//Open another window that is just a basic "About" window
 		//Main JFrame Setup

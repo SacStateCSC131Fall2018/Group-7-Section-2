@@ -35,7 +35,10 @@ public class MenuBar extends JMenuBar {
 		export = new JMenuItem("Export");
 		loadQuery = new JMenuItem("Load Query");
 		saveQuery = new JMenuItem("Save Query");
+		
+		//Open Button adding action
 		open = new JMenuItem("Open");
+		open.addActionListener(new menuAL());
 
 		//Add Actions to File Menu buttons
 		open.addActionListener(new menuAL());
@@ -99,6 +102,8 @@ public class MenuBar extends JMenuBar {
 			if (e.getActionCommand() == "Exit") {
 				System.exit(0);
 			}
+			
+				
 		}
 	}
 }
