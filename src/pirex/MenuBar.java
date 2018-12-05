@@ -45,9 +45,13 @@ public class MenuBar extends JMenuBar {
 		exit.addActionListener(new menuAL());
 
 		fileMenu.add(open);
+		fileMenu.addSeparator();
 		fileMenu.add(export);
+		fileMenu.addSeparator();
 		fileMenu.add(loadQuery);
+		fileMenu.addSeparator();
 		fileMenu.add(saveQuery);
+		fileMenu.addSeparator();
 		fileMenu.add(exit);
 		
 		//Add Buttons to Options Menu
@@ -59,6 +63,7 @@ public class MenuBar extends JMenuBar {
 		documents.addActionListener(new menuAL());
 
 		optionsMenu.add(documents);
+		optionsMenu.addSeparator();
 		optionsMenu.add(sources);
 
 		//Add Buttons to Help Menu
@@ -70,7 +75,9 @@ public class MenuBar extends JMenuBar {
 		index.addActionListener(new menuAL());
 
 		helpMenu.add(index);
+		helpMenu.addSeparator();
 		helpMenu.add(about);
+		
 		
 		//Add menus to the bar
 		add(fileMenu);
