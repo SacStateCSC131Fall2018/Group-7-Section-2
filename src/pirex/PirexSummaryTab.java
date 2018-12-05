@@ -38,5 +38,7 @@ public class PirexSummaryTab extends JPanel
 
 		//Add to the Summary Tab
 		add(scrollableTextArea, gbc);
+		
+		
 	}
 }

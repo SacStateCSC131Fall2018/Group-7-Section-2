@@ -29,7 +29,8 @@ public class PirexCore {
 		pirex.add(jtb, BorderLayout.CENTER);
 		
 		//Add functionality to the components
-
+		
+		
 		//Configure window settings
 		pirex.setVisible(true);
 
