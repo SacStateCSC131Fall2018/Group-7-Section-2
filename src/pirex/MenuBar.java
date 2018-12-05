@@ -35,7 +35,10 @@ public class MenuBar extends JMenuBar {
 		export = new JMenuItem("Export");
 		loadQuery = new JMenuItem("Load Query");
 		saveQuery = new JMenuItem("Save Query");
+		
+		//Open Button adding action
 		open = new JMenuItem("Open");
+		open.addActionListener(new menuAL());
 
 		//Add Actions to File Menu buttons
 		open.addActionListener(new menuAL());
@@ -45,9 +48,13 @@ public class MenuBar extends JMenuBar {
 		exit.addActionListener(new menuAL());
 
 		fileMenu.add(open);
+		fileMenu.addSeparator();
 		fileMenu.add(export);
+		fileMenu.addSeparator();
 		fileMenu.add(loadQuery);
+		fileMenu.addSeparator();
 		fileMenu.add(saveQuery);
+		fileMenu.addSeparator();
 		fileMenu.add(exit);
 		
 		//Add Buttons to Options Menu
@@ -59,6 +66,7 @@ public class MenuBar extends JMenuBar {
 		documents.addActionListener(new menuAL());
 
 		optionsMenu.add(documents);
+		optionsMenu.addSeparator();
 		optionsMenu.add(sources);
 
 		//Add Buttons to Help Menu
@@ -70,7 +78,9 @@ public class MenuBar extends JMenuBar {
 		index.addActionListener(new menuAL());
 
 		helpMenu.add(index);
+		helpMenu.addSeparator();
 		helpMenu.add(about);
+		
 		
 		//Add menus to the bar
 		add(fileMenu);
@@ -85,67 +95,15 @@ public class MenuBar extends JMenuBar {
 			if (e.getActionCommand() == "About") {
 				//Open another window that is just a basic "About" window
 				//Main JFrame Setup
-				JFrame aboutFrame = new JFrame("About Pirex");
-				aboutFrame.setLayout(new GridLayout());
-				GridBagConstraints gbc = new GridBagConstraints();
-				aboutFrame.setSize(300,250);
-				aboutFrame.setLocationRelativeTo(null);
-				aboutFrame.setResizable(false);
-				//Setup Icon
-				String iconPath = "src" + File.separator + "assets"  + File.separator + "logo3.png";
-				ImageIcon icon = new ImageIcon(iconPath);
-				aboutFrame.setIconImage(icon.getImage());
-
-				//Main Panel
-				JPanel aboutPanel = new JPanel();
-
-				//Add aboutPanel to aboutFrame
-				aboutFrame.add(aboutPanel);
-
-				//Panel that holds Pirex Image
-				JPanel topPanel = new JPanel();
-
-				//Add Image to topPanel
-				BufferedImage imageFile = null;
-				try {
-					imageFile = ImageIO.read(new File("src/assets/logo3_256x126.png"));
-				} catch (IOException ex) {
-					System.err.println("Error opening image file.");
-					System.exit(1);
-				}
-				//Actually put the image on the topPanel
-				JLabel aboutImage = new JLabel(new ImageIcon(imageFile));
-				aboutImage.setHorizontalAlignment(CENTER);
-				topPanel.add(aboutImage);
-
-				//Panel that holds close button
-				JPanel bottomPanel = new JPanel();
-
-				//Add Panels to aboutPanel
-				aboutPanel.add(topPanel);
-				aboutPanel.add(bottomPanel);
-/*
-				//TextArea that contains About Text
-				JTextArea aboutText = new JTextArea(2,20);
-				aboutText.setText("Pirex: a student company");
-				aboutText.setEditable(false);
-
-				//Add TextArea to bottomPanel
-				bottomPanel.add(aboutText);
-*/
-				//Close button
-				JButton closeAbout = new JButton("Close");
-				closeAbout.addActionListener(this);
-
-				//Add Close button to bottomPanel
-				bottomPanel.add(closeAbout);
-
-				aboutFrame.setVisible(true);
+				AboutFrame aboutFrame = new AboutFrame();
+				
 			}
 
 			if (e.getActionCommand() == "Exit") {
 				System.exit(0);
 			}
+			
+				
 		}
 	}
 }

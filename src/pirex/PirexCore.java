@@ -1,5 +1,7 @@
 package pirex;
 import java.awt.BorderLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
 
 /*
@@ -19,13 +21,16 @@ public class PirexCore {
 		
 		//Adding Tabs
 		JTabbedPane jtb = new JTabbedPane();
+		int padding = 7;
+		jtb.setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
 		jtb.add("Search for Documents", new PirexSearchTab()); //Search Document Tab
 		jtb.add("Load Documents", new PirexLoadingTab()); //Load Document Tab
 		jtb.add("Summarize Documents", new PirexSummaryTab()); //Document Summary Tab
 		pirex.add(jtb, BorderLayout.CENTER);
 		
 		//Add functionality to the components
-
+		
+		
 		//Configure window settings
 		pirex.setVisible(true);
 

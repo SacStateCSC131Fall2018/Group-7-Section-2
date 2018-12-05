@@ -4,6 +4,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,6 +16,8 @@ import javax.swing.JTextField;
 
 public class PirexSearchTab extends JPanel
 {
+	private JButton clear;
+	private JTextField textField;
 	/**
 	 *
 	 */
@@ -40,14 +44,20 @@ public class PirexSearchTab extends JPanel
 		gbc.insets = inset;
 		topPanel.add(new JLabel("Query: "), gbc);
 		
+		//Text Field
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.weightx = 1;
-		topPanel.add(new JTextField(70), gbc);
+		textField = new JTextField(70);
+		topPanel.add(textField, gbc);
 		
 		gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = inset;
-		topPanel.add(new JButton("Clear"), gbc);
+		
+		//Clear Button
+		clear = new JButton("Clear");
+		clear.addActionListener(new Listener());
+		topPanel.add(clear, gbc);
 		
 		gbc = new GridBagConstraints();
 		gbc.weightx = 1;
@@ -90,7 +100,7 @@ public class PirexSearchTab extends JPanel
 	{
 		JPanel middlePanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		GridBagConstraints gbc = new GridBagConstraints();
-		JLabel message = new JLabel("Test");
+		JLabel message = new JLabel("    ");
 		
 		//message.setVisible(false);
 		middlePanel2.add(message);
@@ -128,5 +138,20 @@ public class PirexSearchTab extends JPanel
 		gbc.gridy = 3;
 		gbc.gridwidth = GridBagConstraints.RELATIVE;
 		add(bottomPanel, gbc);
+	}
+	
+	/*
+	 * Action listener to allow clear button to clear the 
+	 * the writing. 
+	 */
+	private class Listener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			textField.setText("");
+		}
+		
+		
 	}
 }

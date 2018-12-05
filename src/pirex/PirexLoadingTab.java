@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 public class PirexLoadingTab extends JPanel
@@ -34,7 +35,7 @@ public class PirexLoadingTab extends JPanel
 	{
 		super();
 		Container loadTab = this;
-		Insets inset = new Insets(2,10,2,10);
+		Insets inset = new Insets(2,7,2,7);
 		
 		
 		loadTab.setLayout(new GridBagLayout());
@@ -143,6 +144,8 @@ public class PirexLoadingTab extends JPanel
 		public void actionPerformed(ActionEvent buttonpress)
 		{
 			JFileChooser fc = new JFileChooser();
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt");
+			fc.setFileFilter(filter);
 			if(fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
 				filePath = fc.getSelectedFile().getAbsolutePath();
