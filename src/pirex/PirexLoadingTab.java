@@ -20,7 +20,13 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
-
+/**
+ * 
+ * @author Dean Gramcko
+ * This class is the file loading tab for Pirex and sets up the layout of the tab, handles file selection, and gives the Administrator an interface for loading opuses.
+ * The extraction of information from files is handled by a separate class.
+ *
+ */
 public class PirexLoadingTab extends JPanel
 {
 	
@@ -35,6 +41,9 @@ public class PirexLoadingTab extends JPanel
 	
 	private JLabel lPath = new JLabel(), lTitle = new JLabel(), lAuthor = new JLabel(), lSize = new JLabel(); // for displaying load summary info
 	
+	/**
+	 * Default Constructor - Creates fields and sets up the layout of the tab
+	 */
 	PirexLoadingTab()
 	{
 		super();
@@ -48,10 +57,10 @@ public class PirexLoadingTab extends JPanel
 		JPanel row1 = new JPanel(), row2 = new JPanel(), row3 = new JPanel(),row4 = new JPanel();
 		gbc.insets = new Insets(5,5,5,5);
 		
+		//set up sub-containers
 		row1.setLayout(new GridBagLayout());
 		row2.setLayout(new GridBagLayout());
 		row3.setLayout(new GridBagLayout());
-		
 		row4.setLayout(new FlowLayout(-0));
 		jpLoad.setLayout(new GridBagLayout());
 		
@@ -159,12 +168,18 @@ public class PirexLoadingTab extends JPanel
 		
 	}
 	
-
+	/**
+	 * 
+	 * @author Dean Gramcko
+	 * This class handles button presses, allowing the Administrator to select a file and then process it (displays a partial opus summary). 
+	 * 
+	 */
 	private class loadListener implements ActionListener
 	{
+
 		public void actionPerformed(ActionEvent buttonpress)
 		{
-			Boolean errorState = false;
+			Boolean errorState = false; //used to check if IOException was thrown when attempting to parse selected file
 			
 			String cmd = buttonpress.getActionCommand();
 			
@@ -195,7 +210,7 @@ public class PirexLoadingTab extends JPanel
 					}
 				}				
 			}
-			else if(cmd.equals("Process"))
+			else if(cmd.equals("Process")) // populate the Load Summary section with information
 			{
 				if(!errorState && loaded != null)
 				{
@@ -207,6 +222,5 @@ public class PirexLoadingTab extends JPanel
 			}
 		}
 	}
-	
 }
 
