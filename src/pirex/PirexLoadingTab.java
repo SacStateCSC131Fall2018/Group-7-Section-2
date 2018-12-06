@@ -12,6 +12,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -19,6 +20,13 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
+/**
+ * 
+ * @author Dean Gramcko
+ * This class is the file loading tab for Pirex and sets up the layout of the tab, handles file selection, and gives the Administrator an interface for loading opuses.
+ * The extraction of information from files is handled by a separate class.
+ *
+ */
 public class PirexLoadingTab extends JPanel
 {
 	
@@ -28,9 +36,14 @@ public class PirexLoadingTab extends JPanel
 	private String[] comboBoxOptions = new String[] {"Project Gutenberg File", "Plain Text File"};
 	private JComboBox<String> jcbFileType = new JComboBox<String>(comboBoxOptions);
 	private JPanel jpLoad = new JPanel(); // this panel is the load summary window
-	
 	private String filePath;
+	private Opus loaded;
 	
+	private JLabel lPath = new JLabel(), lTitle = new JLabel(), lAuthor = new JLabel(), lSize = new JLabel(); // for displaying load summary info
+	
+	/**
+	 * Default Constructor - Creates fields and sets up the layout of the tab
+	 */
 	PirexLoadingTab()
 	{
 		super();
@@ -44,11 +57,14 @@ public class PirexLoadingTab extends JPanel
 		JPanel row1 = new JPanel(), row2 = new JPanel(), row3 = new JPanel(),row4 = new JPanel();
 		gbc.insets = new Insets(5,5,5,5);
 		
+		//set up sub-containers
 		row1.setLayout(new GridBagLayout());
 		row2.setLayout(new GridBagLayout());
 		row3.setLayout(new GridBagLayout());
-		
 		row4.setLayout(new FlowLayout(-0));
+		jpLoad.setLayout(new GridBagLayout());
+		
+		
 
 		//build row 1
 		gbc.anchor = GridBagConstraints.WEST;
@@ -90,6 +106,7 @@ public class PirexLoadingTab extends JPanel
 		
 		//build row4
 		row4.add(jbProcess);
+		jbProcess.addActionListener(new loadListener());
 		jbProcess.setEnabled(false); //disabled by default - enabled when a file is selected
 		
 		
@@ -131,29 +148,85 @@ public class PirexLoadingTab extends JPanel
 		gbc.gridy = 5;
 		loadTab.add(jpLoad,gbc);
 		
+		gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.weightx = 1;
+		
+		gbc.gridx = 0;
+		gbc.gridy=0;
+		jpLoad.add(lPath,gbc);
+		gbc.gridy=1;
+		jpLoad.add(lTitle,gbc);
+		gbc.gridy=2;
+		jpLoad.add(lAuthor,gbc);
+		gbc.gridy=3;
+		jpLoad.add(lSize,gbc);
+		
+		gbc.gridy=4;
+		gbc.weighty = 1;
+		jpLoad.add(new JLabel(" "),gbc); // this empty JLabel is being used for formatting - this forces the ones above it to reposition to the top of their container
+		
 	}
 	
 	/**
 	 * 
 	 * @author Dean Gramcko
-	 * ActionListener to allow user to select a file and updates the file path displayed.
-	 *
+	 * This class handles button presses, allowing the Administrator to select a file and then process it (displays a partial opus summary). 
+	 * 
 	 */
 	private class loadListener implements ActionListener
 	{
+
 		public void actionPerformed(ActionEvent buttonpress)
 		{
-			JFileChooser fc = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt");
-			fc.setFileFilter(filter);
-			if(fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+			Boolean errorState = false; //used to check if IOException was thrown when attempting to parse selected file
+			
+			String cmd = buttonpress.getActionCommand();
+			
+			if(cmd.equals("Browse")) //when a file is selected, attempt to create opus from it
 			{
-				filePath = fc.getSelectedFile().getAbsolutePath();
-				jtfFilePath.setText(filePath);
-				jbProcess.setEnabled(true);
+				JFileChooser fc = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt");
+				fc.setFileFilter(filter);
+				if(fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+				{
+					filePath = fc.getSelectedFile().getAbsolutePath();
+					jtfFilePath.setText(filePath);
+					
+					try
+					{
+						loaded = PirexOpusCreator.extractOpus(filePath);
+					}
+					catch(IOException e)
+					{
+						errorState = true;
+					}
+					
+					jbProcess.setEnabled(true);
+					if(!errorState && jcbFileType.getSelectedItem().equals("Project Gutenberg File")) // if file is loaded and is Gutenberg, then load title and author
+					{
+						jtfTitle.setText(loaded.getTitle());
+						jtfAuthor.setText(loaded.getAuthor());
+					}
+				}				
+			}
+			else if(cmd.equals("Process")) // populate the Load Summary section with information and reset the other fields
+			{
+				if(!errorState && loaded != null)
+				{
+					lTitle.setText("Title: "+loaded.getTitle());
+					lPath.setText("File: " + filePath);
+					lAuthor.setText("Author: " +loaded.getAuthor());
+					lSize.setText("Opus size: " +String.valueOf(loaded.getOpusSize()));
+					
+					//reset fields, disable Process button
+					jtfFilePath.setText("");
+					jtfTitle.setText("");
+					jtfAuthor.setText("");
+					jbProcess.setEnabled(false);
+				}
 			}
 		}
 	}
-	
 }
 

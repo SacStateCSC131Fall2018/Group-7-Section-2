@@ -1,6 +1,7 @@
 package pirex;
 
 import java.util.ArrayList;
+import java.util.List;
 //Edward Hall
 public class Opus
 {
@@ -61,5 +62,8 @@ public class Opus
 	{
 		documents.add(document);
 	}
-	
+	public void setDocuments (ArrayList<String> documents)
+	{
+		this.documents = documents;
+	}
 }
