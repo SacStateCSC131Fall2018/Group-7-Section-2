@@ -81,15 +81,18 @@ public class Opus
 		this.author = newName;
 	}
 	
-	
+	//Set new Title
 	public void setTitle (String newTitle)
 	{
 		this.author = newTitle;
 	}
+	
+	//Add new document
 	public void addDocument (String document)
 	{
 		documents.add(document);
 	}
+	//Set the older document to new document. 
 	public void setDocuments (ArrayList<String> documents)
 	{
 		this.documents = documents;

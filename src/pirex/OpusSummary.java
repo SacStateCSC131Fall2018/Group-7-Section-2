@@ -3,7 +3,8 @@ import javax.swing.JLabel;
 
 public class OpusSummary extends JLabel 
 {
-	
+	//Constructor: @param index, author, title, docs, path.
+	//Constructs a new JLabel.
 	public OpusSummary(long index, String author, String title, long docs, String path)
 	{
 		String oSummary;

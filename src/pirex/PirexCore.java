@@ -12,6 +12,10 @@ import javax.swing.JTabbedPane;
 public class PirexCore {
 
 
+	/*
+	 * The execution of the code starts here.
+	 * All other classes are implemented in this
+	 */
 	public static void main(String[] args) {
 		
 		//Create the main window
