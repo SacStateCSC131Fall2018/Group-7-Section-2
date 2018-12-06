@@ -210,7 +210,7 @@ public class PirexLoadingTab extends JPanel
 					}
 				}				
 			}
-			else if(cmd.equals("Process")) // populate the Load Summary section with information
+			else if(cmd.equals("Process")) // populate the Load Summary section with information and reset the other fields
 			{
 				if(!errorState && loaded != null)
 				{
@@ -218,6 +218,12 @@ public class PirexLoadingTab extends JPanel
 					lPath.setText("File: " + filePath);
 					lAuthor.setText("Author: " +loaded.getAuthor());
 					lSize.setText("Opus size: " +String.valueOf(loaded.getOpusSize()));
+					
+					//reset fields, disable Process button
+					jtfFilePath.setText("");
+					jtfTitle.setText("");
+					jtfAuthor.setText("");
+					jbProcess.setEnabled(false);
 				}
 			}
 		}
