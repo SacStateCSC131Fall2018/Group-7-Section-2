@@ -37,14 +37,20 @@ public class Opus
 		title=documentName;
 		documents = new ArrayList<String>();
 	}
+	
+	//Getter 1: Return author name
 	public String getAuthor()
 	{
 		return author;
 	}
+	
+	//Getter: Return Opus title
 	public String getTitle()
 	{
 		return title;
 	}
+	
+	//returns index of the text
 	public int findTextIndex (String text)
 	{
 		//if result is not found return -1
@@ -56,18 +62,26 @@ public class Opus
 		}
 		return result;
 	}
+	
+	//Return index of the Document
 	public String getDoc(int index)
 	{
 		return documents.get(index);
 	}
+	
+	//Return the size of the Opus
 	public int getOpusSize()
 	{
 		return documents.size();
 	}
+	
+	//change author name or set author
 	public void setAuthor (String newName)
 	{
 		this.author = newName;
 	}
+	
+	
 	public void setTitle (String newTitle)
 	{
 		this.author = newTitle;
