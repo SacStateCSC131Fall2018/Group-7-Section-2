@@ -12,11 +12,13 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 
 public class PirexLoadingTab extends JPanel
@@ -28,8 +30,8 @@ public class PirexLoadingTab extends JPanel
 	private String[] comboBoxOptions = new String[] {"Project Gutenberg File", "Plain Text File"};
 	private JComboBox<String> jcbFileType = new JComboBox<String>(comboBoxOptions);
 	private JPanel jpLoad = new JPanel(); // this panel is the load summary window
-	
 	private String filePath;
+	private Opus loaded;
 	
 	PirexLoadingTab()
 	{
@@ -133,24 +135,45 @@ public class PirexLoadingTab extends JPanel
 		
 	}
 	
-	/**
-	 * 
-	 * @author Dean Gramcko
-	 * ActionListener to allow user to select a file and updates the file path displayed.
-	 *
-	 */
+
 	private class loadListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent buttonpress)
 		{
-			JFileChooser fc = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt");
-			fc.setFileFilter(filter);
-			if(fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+			Boolean errorState = false;
+			
+			
+			String cmd = buttonpress.getActionCommand();
+			if(cmd.equals("Browse"))
 			{
-				filePath = fc.getSelectedFile().getAbsolutePath();
-				jtfFilePath.setText(filePath);
-				jbProcess.setEnabled(true);
+				JFileChooser fc = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt");
+				fc.setFileFilter(filter);
+				if(fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+				{
+					filePath = fc.getSelectedFile().getAbsolutePath();
+					jtfFilePath.setText(filePath);
+					
+					try
+					{
+						loaded = PirexOpusCreator.extractOpus(filePath);
+					}
+					catch(IOException e)
+					{
+						errorState = true;
+					}
+					
+					jbProcess.setEnabled(true);
+					if(!errorState && jcbFileType.getSelectedItem().equals("Project Gutenberg File")) // if file is loaded and is Gutenberg, then load title and author
+					{
+						jtfTitle.setText(loaded.getTitle());
+						jtfAuthor.setText(loaded.getAuthor());
+					}
+				}				
+			}
+			else if(cmd.equals("Process"))
+			{
+				
 			}
 		}
 	}
