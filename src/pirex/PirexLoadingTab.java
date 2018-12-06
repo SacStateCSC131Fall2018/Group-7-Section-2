@@ -33,6 +33,8 @@ public class PirexLoadingTab extends JPanel
 	private String filePath;
 	private Opus loaded;
 	
+	private JLabel lPath = new JLabel(), lTitle = new JLabel(), lAuthor = new JLabel(), lSize = new JLabel(); // for displaying load summary info
+	
 	PirexLoadingTab()
 	{
 		super();
@@ -51,6 +53,9 @@ public class PirexLoadingTab extends JPanel
 		row3.setLayout(new GridBagLayout());
 		
 		row4.setLayout(new FlowLayout(-0));
+		jpLoad.setLayout(new GridBagLayout());
+		
+		
 
 		//build row 1
 		gbc.anchor = GridBagConstraints.WEST;
@@ -92,6 +97,7 @@ public class PirexLoadingTab extends JPanel
 		
 		//build row4
 		row4.add(jbProcess);
+		jbProcess.addActionListener(new loadListener());
 		jbProcess.setEnabled(false); //disabled by default - enabled when a file is selected
 		
 		
@@ -133,6 +139,24 @@ public class PirexLoadingTab extends JPanel
 		gbc.gridy = 5;
 		loadTab.add(jpLoad,gbc);
 		
+		gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.weightx = 1;
+		
+		gbc.gridx = 0;
+		gbc.gridy=0;
+		jpLoad.add(lPath,gbc);
+		gbc.gridy=1;
+		jpLoad.add(lTitle,gbc);
+		gbc.gridy=2;
+		jpLoad.add(lAuthor,gbc);
+		gbc.gridy=3;
+		jpLoad.add(lSize,gbc);
+		
+		gbc.gridy=4;
+		gbc.weighty = 1;
+		jpLoad.add(new JLabel(" "),gbc); // this empty JLabel is being used for formatting - this forces the ones above it to reposition to the top of their container
+		
 	}
 	
 
@@ -142,9 +166,9 @@ public class PirexLoadingTab extends JPanel
 		{
 			Boolean errorState = false;
 			
-			
 			String cmd = buttonpress.getActionCommand();
-			if(cmd.equals("Browse"))
+			
+			if(cmd.equals("Browse")) //when a file is selected, attempt to create opus from it
 			{
 				JFileChooser fc = new JFileChooser();
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt");
@@ -173,7 +197,13 @@ public class PirexLoadingTab extends JPanel
 			}
 			else if(cmd.equals("Process"))
 			{
-				
+				if(!errorState && loaded != null)
+				{
+					lTitle.setText("Title: "+loaded.getTitle());
+					lPath.setText("File:" + filePath);
+					lAuthor.setText("Author: " +loaded.getAuthor());
+					lSize.setText("Opus size:" +String.valueOf(loaded.getOpusSize()));
+				}
 			}
 		}
 	}
