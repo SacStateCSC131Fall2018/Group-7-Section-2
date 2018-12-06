@@ -47,7 +47,8 @@ public class MenuBar extends JMenuBar {
 		loadQuery.addActionListener(new menuAL());
 		export.addActionListener(new menuAL());
 		exit.addActionListener(new menuAL());
-
+		
+		//Ad File Menu Buttons to File Menu
 		fileMenu.add(open);
 		fileMenu.addSeparator();
 		fileMenu.add(export);
@@ -78,6 +79,7 @@ public class MenuBar extends JMenuBar {
 		about.addActionListener(new menuAL());
 		index.addActionListener(new menuAL());
 
+		//Add Help Menu Buttons to Help Menu
 		helpMenu.add(index);
 		helpMenu.addSeparator();
 		helpMenu.add(about);
@@ -89,10 +91,15 @@ public class MenuBar extends JMenuBar {
 		add(helpMenu);
 	}
 
-	//Menu Action Listener
-	public class menuAL implements ActionListener {
+	/*
+	 * MenuAL short for Menu Action Listeners. This adds desired 
+	 * actions to menu bar item. 
+	 */
+	private class menuAL implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			
+			//If About button is pressed
 			if (e.getActionCommand() == "About") {
 				//Open another window that is just a basic "About" window
 				//Main JFrame Setup
@@ -100,6 +107,7 @@ public class MenuBar extends JMenuBar {
 				
 			}
 
+			//If Exit Button is pressed
 			if (e.getActionCommand() == "Exit") {
 				System.exit(0);
 			}
