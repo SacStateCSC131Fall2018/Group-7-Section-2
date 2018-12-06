@@ -4,14 +4,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PirexOpusCreator 
 {
 	public static Opus extractOpus(String filename) throws IOException
 	{
 		BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
-		List<String> lines = new ArrayList<String>(); //will store lines
+		ArrayList<String> lines = new ArrayList<String>(); //will store lines
 		String line; //will be used for reading individual lines
 		StringBuilder sb = new StringBuilder();
 		
@@ -37,11 +36,12 @@ public class PirexOpusCreator
 		reader.close();
 		
 		Opus opus = new Opus(extractAuthor(lines), extractTitle(lines));
+		opus.setDocuments(lines);
 		
 		return opus;
 	}
 	
-	private static String extractAuthor(List<String> paragraphs) 
+	private static String extractAuthor(ArrayList<String> paragraphs) 
 	{
 		for(String temp : paragraphs)
 		{
@@ -53,7 +53,7 @@ public class PirexOpusCreator
 		return null;
 	}
 	
-	private static String extractTitle(List<String> paragraphs) 
+	private static String extractTitle(ArrayList<String> paragraphs) 
 	{
 		for(String temp : paragraphs)
 		{
