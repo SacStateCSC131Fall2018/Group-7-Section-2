@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 public class PirexOpusCreator 
 {
+	/* Extracts information from .txt file and turns it into an Opus object.
+	 * @param 	filename the file being past in
+	 * @return	opus A fully built Opus object
+	 * @throws	IOException
+	 */
 	public static Opus extractOpus(String filename) throws IOException
 	{
 		BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
@@ -41,6 +46,10 @@ public class PirexOpusCreator
 		return opus;
 	}
 	
+	/* Extracts the author from the text file ArrayList of paragraphs
+	 * @params paragraphs an ArrayList<String> of long strings from the document past in.
+	 * @returns a string with the author's name
+	 */
 	private static String extractAuthor(ArrayList<String> paragraphs) 
 	{
 		for(String temp : paragraphs)
@@ -53,6 +62,10 @@ public class PirexOpusCreator
 		return null;
 	}
 	
+	/* Extracts the title from the text file ArrayList of paragraphs
+	 * @params paragraphs an ArrayList<String> of long strings from the document past in.
+	 * @returns a string with the title's name
+	 */
 	private static String extractTitle(ArrayList<String> paragraphs) 
 	{
 		for(String temp : paragraphs)
