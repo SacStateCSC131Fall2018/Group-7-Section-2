@@ -7,6 +7,7 @@ import javax.swing.JTabbedPane;
 /*
  * This class is the core class of the entire Pirex Project
  * The execution, flow and all other client classes are controlled from this class.
+ * @Author: Entire Group 
  */
 public class PirexCore {
 

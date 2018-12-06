@@ -13,6 +13,7 @@ import static javax.swing.SwingConstants.CENTER;
 
 /*
  * This class creates JMenu Bar that contains menu buttons.
+ * @author: Shazim Ajaz edited by Group
  */
 public class MenuBar extends JMenuBar {
 
