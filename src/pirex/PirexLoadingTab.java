@@ -215,9 +215,9 @@ public class PirexLoadingTab extends JPanel
 				if(!errorState && loaded != null)
 				{
 					lTitle.setText("Title: "+loaded.getTitle());
-					lPath.setText("File:" + filePath);
+					lPath.setText("File: " + filePath);
 					lAuthor.setText("Author: " +loaded.getAuthor());
-					lSize.setText("Opus size:" +String.valueOf(loaded.getOpusSize()));
+					lSize.setText("Opus size: " +String.valueOf(loaded.getOpusSize()));
 				}
 			}
 		}
